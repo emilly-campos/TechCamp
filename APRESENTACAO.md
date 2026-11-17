@@ -1,13 +1,5 @@
 # Roteiro de apresentação — TechCamp
 
-## Antes de apresentar
-
-- Inicie o MySQL no XAMPP.
-- Rode `verificar_conexao.py`; ele deve informar conexão e campos disponíveis.
-- Inicie `app.py` e abra http://127.0.0.1:5000/.
-- Confira se a página mostra o catálogo do seu banco e a indicação “Conectado”.
-- Separe esta pasta no VS Code e o phpMyAdmin para mostrar a persistência.
-
 ## Demonstração de 5 a 7 minutos
 
 1. **Objetivo (30 s):** “Este sistema gerencia o catálogo de produtos de uma loja de informática. O usuário faz as operações pela página e o Flask se comunica com o MySQL.”
