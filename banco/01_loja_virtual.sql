@@ -1,6 +1,3 @@
--- LOJA VIRTUAL - MySQL / phpMyAdmin
--- Estrutura e dados baseados no Apendice A da apostila de Banco de Dados.
--- Execute uma vez em um banco novo. Nao apaga bancos ou tabelas existentes.
 CREATE DATABASE loja_virtual DEFAULT CHARACTER SET utf8mb4;
 USE loja_virtual;
 
