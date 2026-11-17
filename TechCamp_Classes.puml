@@ -1,0 +1,47 @@
+@startuml
+' Diagrama das classes de produção existentes no projeto TechCamp.
+title TechCamp — Diagrama de Classes UML
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam classBackgroundColor #F5F8FF
+skinparam classBorderColor #2448DF
+hide empty members
+
+class Produto {
+  + id_produto : int ou None
+  + nome : str
+  + preco : Decimal
+  + id_categoria : int
+  + __init__(nome: str, preco: Decimal, id_categoria: int, id_produto: int = None)
+  + to_dict() : dict
+}
+
+class ProdutoDAO {
+  + inserir(produto: Produto) : int
+  + buscar_todos() : list[Produto]
+  + buscar_por_id(id_produto: int) : Produto ou None
+  + atualizar(id_produto: int, produto: Produto) : bool
+  + deletar(id_produto: int) : bool
+}
+
+class CategoriaDAO {
+  + buscar_todas() : list[dict]
+}
+
+ProdutoDAO ..> Produto : usa e cria objetos
+
+note bottom of CategoriaDAO
+  Retorna dicionários com id_categoria e nome.
+  Não existe classe Categoria no código atual.
+end note
+
+legend bottom
+  + indica membro público.
+  A seta tracejada representa dependência, não herança.
+  Os tipos são inferidos do uso no sistema; o Python não possui essas anotações.
+  ProdutoDAO e CategoriaDAO não possuem atributos de instância declarados.
+  app.py contém funções de rotas; conexao.py contém a função conectar().
+  Esses módulos não são classes e, por isso, não aparecem como classes UML.
+endlegend
+@enduml

@@ -1,0 +1,18 @@
+digraph TechCamp {
+ graph [rankdir=TB, bgcolor="white", pad="0.45", nodesep="0.65", ranksep="0.7", fontname="DejaVu Sans", labelloc=t, label=<<FONT POINT-SIZE="28" COLOR="#182239"><B>TechCamp</B></FONT><BR/><FONT POINT-SIZE="16" COLOR="#667085">Diagrama de Classes UML · Implementação atual</FONT><BR/><BR/>>];
+ node [shape=plain, fontname="DejaVu Sans", fontsize=12];
+ edge [fontname="DejaVu Sans", fontsize=12, color="#526585", fontcolor="#526585"];
+Produto [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="14" COLOR="#2448DF"><TR><TD BGCOLOR="#2448DF"><FONT COLOR="white" POINT-SIZE="19"><B>Produto</B></FONT><BR/><FONT COLOR="#DFE6FF" POINT-SIZE="11">models.py</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ id_produto : int ou None<BR ALIGN="LEFT"/>+ nome : str<BR ALIGN="LEFT"/>+ preco : Decimal<BR ALIGN="LEFT"/>+ id_categoria : int<BR ALIGN="LEFT"/></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ __init__(nome: str, preco: Decimal,<BR ALIGN="LEFT"/>    id_categoria: int, id_produto: int = None)<BR ALIGN="LEFT"/>+ to_dict() : dict<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+ProdutoDAO [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="14" COLOR="#2448DF"><TR><TD BGCOLOR="#2448DF"><FONT COLOR="white" POINT-SIZE="19"><B>ProdutoDAO</B></FONT><BR/><FONT COLOR="#DFE6FF" POINT-SIZE="11">dao.py</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT">Sem atributos de instância declarados<BR ALIGN="LEFT"/></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ inserir(produto: Produto) : int<BR ALIGN="LEFT"/>+ buscar_todos() : list[Produto]<BR ALIGN="LEFT"/>+ buscar_por_id(id_produto: int) : Produto ou None<BR ALIGN="LEFT"/>+ atualizar(id_produto: int, produto: Produto) : bool<BR ALIGN="LEFT"/>+ deletar(id_produto: int) : bool<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+CategoriaDAO [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="14" COLOR="#2448DF"><TR><TD BGCOLOR="#2448DF"><FONT COLOR="white" POINT-SIZE="19"><B>CategoriaDAO</B></FONT><BR/><FONT COLOR="#DFE6FF" POINT-SIZE="11">dao.py</FONT></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT">Sem atributos de instância declarados<BR ALIGN="LEFT"/></TD></TR><HR/><TR><TD ALIGN="LEFT" BALIGN="LEFT">+ buscar_todas() : list[dict]<BR ALIGN="LEFT"/></TD></TR></TABLE>>];
+{rank=same; ProdutoDAO; CategoriaDAO;}
+ProdutoDAO -> Produto [style=dashed, arrowhead=open, label=" usa e cria objetos "];
+nota [shape=note, color="#CBD5E1", style=filled, fillcolor="#F6F8FC", margin="0.22", label="CategoriaDAO retorna dicionários
+com id_categoria e nome.
+Não há classe Categoria no código."];
+CategoriaDAO -> nota [style=dotted, arrowhead=none];
+{rank=same; Produto; nota;}
+legenda [shape=box, color="#E2E7F0", style="rounded,filled", fillcolor="#F6F8FC", margin="0.25", fontsize=11, label="COMO LER\l+  Membro público. A seta tracejada indica dependência, não herança.\lOs tipos foram inferidos do uso; não são anotações presentes no Python.\lid_produto pode ser None antes do cadastro no banco.\l\lESCOPO\lapp.py contém funções de rotas e conexao.py contém a função conectar().\lSão módulos, não classes. As tabelas do banco pertencem ao diagrama de dados.\l"];
+Produto -> legenda [style=invis];
+nota -> legenda [style=invis];
+}
